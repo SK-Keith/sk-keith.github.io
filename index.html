@@ -198,7 +198,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-18 22:40:10 / 修改时间：23:39:19" itemprop="dateCreated datePublished" datetime="2020-03-18T22:40:10+08:00">2020-03-18</time>
+              <time title="创建时间：2020-03-18 22:40:10 / 修改时间：23:44:15" itemprop="dateCreated datePublished" datetime="2020-03-18T22:40:10+08:00">2020-03-18</time>
             </span>
 
           
@@ -212,41 +212,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <a id="more"></a>
-
-<h1 id="1-抽象类"><a href="#1-抽象类" class="headerlink" title="1.抽象类"></a>1.抽象类</h1><p>简单介绍下抽象类，借用《Java编程思想》一书中所说，包含抽象方法的类叫做抽象类。abstract 关键字就用来修饰抽象方法或抽象类。</p>
-<p>为何要设计抽象类？</p>
-<pre><code>abstract class className {
-    abstract void fun();
-}</code></pre><p>从这里可以看出，抽象类就是为了继承而存在的。若抽象方法不用于继承，则也没有存在的意义。</p>
-<p>于是，对于关键词abstract，不可以与final,private,static关键字共存。原因如下：</p>
-<ol>
-<li>final 修饰的方法是常量类，不能用于重写，意味着子类不可以重写该方法，这与抽象方法继承实现相矛盾；</li>
-<li>private 修饰的方法是私有的，不能被子类所访问，这与抽象方法要继承相矛盾；</li>
-<li>static 修饰的方法是静态的，随着类的加载而加载，则该方法不需要在子类中去实现，这与抽象方法要继承相矛盾；</li>
-</ol>
-<p>抽象类和普通类有三点区别：</p>
-<ol>
-<li><p>抽象方法必须为public或者默认修饰符(Java1.8之前protected是默认修饰符，Java1.8开始之后default是默认修饰符)<br> 例如：在jdk1.8以前，抽象类中方法abstract void fun();的默认访问权限是protected；非抽象类中方法void fun(){}的默认访问权限是default，即包访问权限。jdk1.8时，抽象类中的抽象方法和非抽象方法在不加修饰符的情况下，都是默认的default</p>
-</li>
-<li><p>抽象类中不可以被实例化，即创建对象。</p>
-<pre><code>Class a = new Class();//Class 不能为抽象类</code></pre></li>
-<li><p>如果一个类继承一个抽象类，则子类必须实现父类的所有抽象方法，否则依旧是抽象类。</p>
-</li>
-</ol>
-<h1 id="2-接口"><a href="#2-接口" class="headerlink" title="2.接口"></a>2.接口</h1><p>《Java编程思想》中写到，接口和内部类为我们提供了一种将接口与实现分离的更加结构化的方法。接口是这么描述的，它不仅仅是一个极度抽象的类，因为它允许人们通过创建一个能够被向上转型为多种基类的类型，来实现某种类似多重继承变种的特性。</p>
-<p>interface关键字用于修饰接口，要让一个类遵循某个特定接口（或者是一组接口），需要使用implements 关键字，它表示：”interface 只是它的外貌，但是现在我要声明它是如何工作的“。<br>关于接口的修饰符<br>JDK 1.8前，接口中的方法必须是public的<br>JDK 1.8时，接口中的方法可以是public的，也可以是default的<br>JDK 1.9时，接口中的方法可以是private的</p>
-<h1 id="3-接口和抽象类的区别"><a href="#3-接口和抽象类的区别" class="headerlink" title="3.接口和抽象类的区别"></a>3.接口和抽象类的区别</h1><ol>
-<li>抽象类中可以包含非抽象的普通方法，而接口中所有的方法必须是抽象的，不能有非抽象的普通方法；</li>
-<li>一个类可以实现多个接口，但只能继承一个抽象类</li>
-<li>抽象类中可以有构造方法，而接口中不能有构造方法</li>
-<li>抽象类中的抽象方法访问类型可以是public protected default类型，但接口中的抽象方法只能是public，而且是abstract</li>
-<li>抽象类中可以有静态方法，接口中不能有静态方法</li>
-<li>抽象类和接口都可以包含静态成员变量，抽象类中的静态成员变量的访问类型可以随意，但接口中的变量只能是public static final类型，并且默认也是这种类型</li>
-<li>抽象类中可以有普通成员变量，而接口中不能有</li>
-<li>接口中更多的是系统框架设计方法发挥作用，主要定义模块之间的通信，而抽象类在代码实现方面发挥作用，可以实现代码的重用。</li>
-</ol>
-
+          <p>Java接口与抽象类</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/18/Java%E7%9A%84%E6%8E%A5%E5%8F%A3%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
