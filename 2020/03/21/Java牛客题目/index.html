@@ -59,11 +59,13 @@
 <meta property="og:description" content="Java基础">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-21T07:10:01.000Z">
-<meta property="article:modified_time" content="2020-03-21T08:12:36.005Z">
+<meta property="article:modified_time" content="2020-03-21T12:12:35.835Z">
 <meta property="article:author" content="说书人">
-<meta property="article:tag" content="Java基础">
-<meta property="article:tag" content="接口">
-<meta property="article:tag" content="抽象类">
+<meta property="article:tag" content="JVM">
+<meta property="article:tag" content="static、final、finally、finalize">
+<meta property="article:tag" content="重写、重载">
+<meta property="article:tag" content="原码、反码、补码、基本运算符">
+<meta property="article:tag" content="Java 标识符">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2020/03/21/Java%E7%89%9B%E5%AE%A2%E9%A2%98%E7%9B%AE/">
@@ -204,7 +206,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-21 15:10:01 / 修改时间：16:12:36" itemprop="dateCreated datePublished" datetime="2020-03-21T15:10:01+08:00">2020-03-21</time>
+              <time title="创建时间：2020-03-21 15:10:01 / 修改时间：20:12:35" itemprop="dateCreated datePublished" datetime="2020-03-21T15:10:01+08:00">2020-03-21</time>
             </span>
 
           
@@ -221,30 +223,138 @@
         <p>Java基础</p>
 <a id="more"></a>
 
-<h1 id="1-以下描述错误的一项是（-）？"><a href="#1-以下描述错误的一项是（-）？" class="headerlink" title="1. 以下描述错误的一项是（ ）？"></a><font size=3>1. 以下描述错误的一项是（ ）？</font></h1><p>A. 程序计数器是一个比较小的内存区域，用于指示当前线程所执行的字节码执行  到了第几行，是线程隔离的<br>B. 原则上讲，所有的对象都是在堆区上分配内存，是线程之间共享的<br>C. 方法区用于存储JVM加载的类信息、常量、静态变量，即使编译器编译后的代码等数据，是线程隔离的<br>D. Java方法执行内存模型，用于存储局部变量，操作数栈，动态链接，方法出口等信息，是线程隔离的</p>
-<p><font color="#ccc">答案：C<br>解析：方法区和堆内存是线程共享的。程序计数器、虚拟机栈、本地方法栈是线程隔离的。</font></p>
-<h1 id="2-不同数据类型之间的优先关系？"><a href="#2-不同数据类型之间的优先关系？" class="headerlink" title="2. 不同数据类型之间的优先关系？"></a><font size=3>2. 不同数据类型之间的优先关系？</font></h1><p><font color="#ccc">答案：自动转换按从低到高的顺序转换。不同类型数据间的优先关系如下：<br>低 ———————————————&gt; 高<br>byte,short,char-&gt; int -&gt; long -&gt; float -&gt; double<br></font></p>
-<h1 id="3-static的作用？"><a href="#3-static的作用？" class="headerlink" title="3. static的作用？"></a><font size=3>3. static的作用？</font></h1><p><font color="#ccc">答案：static用于修饰成员变量和成员函数，想要实现对象中的共性数据的对象共享，可以将这个数据进行静态修饰。<br>被静态修饰的成员可以直接被类名调用。静态随着类的加载而加载，而且优先于对象存在。<br>静态方法只能访问静态成员（静态方法和静态变量），不可以访问非静态成员，这是因为静态方法加载时，优先于对象存在，所以没有办法访问对象中的成员。<br>静态方法中不能使用this和super关键字，因为this代表本类对象，super代表父类对象，而静态时，有可能没有对象存在，所以this和super无法使用。<br></font></p>
-<h1 id="3-fianl、fianlly、finalize的作用？"><a href="#3-fianl、fianlly、finalize的作用？" class="headerlink" title="3. fianl、fianlly、finalize的作用？"></a><font size=3>3. fianl、fianlly、finalize的作用？</font></h1><p><font color="#ccc">答案：final关键字<br>可以修饰类，方法，变量（成员变量内，局部变量，静态变量），被final修饰的类是一个最终类，不可以被继承。<br>被final修饰的方法是一个最终方法，不可以被覆盖，但是可以被继承。<br>被final修饰的变量只能是一个常量，只能赋值一次。<br>内部类被定义在类中的局部位置上时，只能访问局部被final修饰的局部变量。<br>final修饰变量，变量的引用（也就是指向的地址）不可变，但是引用的内容可以变（地址中的内容可变）。</p>
-<div><div class="fold_hider"><div class="close hider_title">????</div></div><div class="fold">
-<p>123456 </p>
+<h1 id="以下描述错误的一项是（-）？"><a href="#以下描述错误的一项是（-）？" class="headerlink" title="以下描述错误的一项是（ ）？"></a><font size=3>以下描述错误的一项是（ ）？</font></h1><p>A. 程序计数器是一个比较小的内存区域，用于指示当前线程所执行的字节码执行  到了第几行，是线程隔离的<br>B. 原则上讲，所有的对象都是在堆区上分配内存，是线程之间共享的<br>C. 方法区用于存储JVM加载的类信息、常量、静态变量，即使编译器编译后的代码等数据，是线程隔离的<br>D. Java方法执行内存模型，用于存储局部变量，操作数栈，动态链接，方法出口等信息，是线程隔离的</p>
+<p><font color="#ccc">答案：C<br>解析：方法区和堆内存是线程共享的。程序计数器、虚拟机栈、本地方法栈是线程隔离的。<br>属于共享内存区域，存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。<br></font></p>
+<h1 id="不同数据类型之间的优先关系？"><a href="#不同数据类型之间的优先关系？" class="headerlink" title="不同数据类型之间的优先关系？"></a><font size=3>不同数据类型之间的优先关系？</font></h1><p><font color="#ccc">解析：自动转换按从低到高的顺序转换。不同类型数据间的优先关系如下：<br>低 ———————————————&gt; 高<br>byte,short,char-&gt; int -&gt; long -&gt; float -&gt; double<br></font></p>
+<h1 id="static的作用？"><a href="#static的作用？" class="headerlink" title="static的作用？"></a><font size=3>static的作用？</font></h1><p><font color="#ccc">解析：static用于修饰成员变量和成员函数，想要实现对象中的共性数据的对象共享，可以将这个数据进行静态修饰。</p>
+<ol>
+<li>被静态修饰的成员可以直接被类名调用</li>
+<li>静态随着类的加载而加载，而且优先于对象存在</li>
+<li>静态方法只能访问静态方法、静态变量，不可以访问非静态成员，因为静态方法加载时，优先于对象存在，所以访问不了对象成员</li>
+<li>静态方法中不能使用this和super，因为this代表本类对象，super代表父类对象，而此时有可能对象还不存在，所以this和super无法使用 </li>
+</ol>
+</font>
 
-</div></div>
+<h1 id="final、finally、finalize的作用？"><a href="#final、finally、finalize的作用？" class="headerlink" title="final、finally、finalize的作用？"></a><font size=3>final、finally、finalize的作用？</font></h1><p><font color="#ccc">解析：</font><br><font color="blue">final 关键字</font><br><font size="2px">可以修饰类，方法，变量（成员变量内，局部变量，静态变量）<br>被final修饰的类是一个最终类，不可以被继承<br>被final修饰的方法是一个最终方法，不可以被覆盖，但是可以被继承</p>
+<ol>
+<li>父类的方法若为public，子类不能重写；</li>
+<li>若为private，则允许被重写。不同类。此时父类的private方法会隐式地被指定为final方法。</li>
+</ol>
+<p>final修饰变量，变量的引用（也就是指向的地址）不可变，但是引用的内容可以变（地址中的内容可变）</p>
+<ol>
+<li>如果final修饰的是一个基本数据类型的变量，那么这个变量的值就定了，不能变了；</li>
+<li>如果修饰的是一个引用变量，那么该变量存的是一个内存地址，该地址就不能变了。但是该内存地址所指向的那个对象还是可以变的</li>
+</ol>
+<pre><code>final StringBuilder sb = new StringBuilder();
+sb.append(&quot;11&quot;);
+System.out.println(sb.toString());//11
+sb.append(&quot;22&quot;);
+System.out.println(sb.toString());//1122</code></pre></font>
 
+<p><font color="blue">finally 关键字</font></p>
+<p><font size="2px">表示总是执行。但是其实finally也有不执行的时候</p>
+<ol>
+<li>在try中调用System.exit(0)，强制退出了程序，finally块不执行。</li>
+<li>在进入try块前，出现了异常，finally块不执行</li>
+</ol>
+</font>
+
+<p><font color="blue">finalize 关键字</font></p>
+<p>修饰的这个方法一个对象只能执行一次，只能在第一次进入被回收的队列。而且对象所属于的类重写了finalize方法才会被执行。<br>第二次进入回收队列的时候，不会再执行其finalize方法，而是直接被二次标记，在下一次GC的时候被GC。</p>
+<p><font color="#ccc">参考<a href="https://www.nowcoder.com/questionTerminal/47ffaf4670384e34a925e294fcd686c0?toCommentId=1369566" target="_blank" rel="noopener">牛客题目</a></font></p>
+<h1 id="方法的重写与重载"><a href="#方法的重写与重载" class="headerlink" title="方法的重写与重载"></a><font size=3>方法的重写与重载</font></h1><p><font color="#ccc">解析：<br>方法的重写（override）遵循两同两小一大原则：<br>方法名相同，参数类型相同<br>子类返回类型小于等于父类方法返回类型，子类抛出异常小于等于父类方法抛出异常，<br>子类访问权限大于等于父类方法访问权限。<br>方法的重载<br>方法名相同，方法参数数量不同或者类型不同，不以方法返回值为标志划分不同的重载方法。<br></font></p>
+<h1 id="Java-基本运算符"><a href="#Java-基本运算符" class="headerlink" title="Java 基本运算符"></a><font size=3>Java 基本运算符</font></h1><p><font color="#ccc">解析：</font></p>
+<pre><code>// a = 0011 b = 0110
+&amp; 按位与
+// a&amp;b = 0010
+| 按位或
+// a|b = 0111
+~ 按位取反
+// ~ 0111 (7) = 1000 (8)  ~a&amp;b|a&amp;~b = 0101 ~a = 1100
+^ 按位异或
+// a^b = 0101
+&gt;&gt; 右移,如果该数为正，则高位补0，若为负数，则高位补1；
+// 20的二进制补码：0001 0100   向右移动两位后：0000 0101    结果：r = 5
+
+&gt;&gt;&gt; 无符号右移,不分正负数，低位补0
+// r = 20 &gt;&gt;&gt; 2
+//　　　　结果与 r = 20 &gt;&gt; 2 相同
+// r = -20 &gt;&gt;&gt; 2
+// -20:源码：10000000 00000000 00000000 00010100
+//　　　　右移：00111111  11111111   11111111   11111011
+// 结果：r = 1073741819
+
+&lt;&lt; 左移,不分正负数，低位补0
+// 20的二进制补码：0001 0100   向左移动两位后：0101 0000    结果：r = 80</code></pre><h1 id="原码、反码、补码的含义"><a href="#原码、反码、补码的含义" class="headerlink" title="原码、反码、补码的含义"></a><font size=3>原码、反码、补码的含义</font></h1><p><font color="#ccc">解析：</font></p>
+<pre><code>// -20:原码：10000000 00000000 00000000 00010100
+//　　反码：11111111  11111111   11111111   11101011(正数的反码还是等于原码，负数的反码就是他的原码除符号位外，按位取反)
+//　　补码：11111111  11111111   11111111   11101100(正数的补码等于他的原码,负数的补码等于反码+1)</code></pre><p><font color="#ccc">参考<a href="https://www.jianshu.com/p/3d92fe1c34af" target="_blank" rel="noopener">补码杂谈</a></font></p>
+<h1 id="Java-的标识符特征"><a href="#Java-的标识符特征" class="headerlink" title="Java 的标识符特征"></a><font size=3>Java 的标识符特征</font></h1><p><font color="#ccc">解析：<br>Java标识符由数字、字母、下划线(_)、美元符号($)组成。<br>首位不能是数字。<br>并且Java关键字不能作为标识符。</p>
+</font>
+
+<h1 id="Java-Object方法"><a href="#Java-Object方法" class="headerlink" title="Java Object方法"></a><font size=3>Java Object方法</font></h1><p><font color="#ccc">解析：</font></p>
+<pre><code>clone()        创建并返回此对象的一个副本
+equal(Object obj)     指示其他某个对象是否与此对象“相等”
+finalize()    当垃圾回收器确定不存在对该对象的更多引用时，由对象的垃圾回收器调用此方法
+getClass()    返回此Object 的运行类
+hashCode()    返回该对象的哈希值
+notify()    唤醒在此对象监视器上等待的某个线程
+notifyAll() 唤醒在此对象监视器上等待的所有线程
+toString()    返回该对象的字符串表示
+wait()        在其他线程调用此对象的notify() 方法或notifyAll() 方法前，导致当前线程等待
+wait(long timeout)    在其他线程调用此对象的notify方法或notifyAll方法，或者已超过某个实际时间量前，导致当前线程等待
+wait(long timeout, int nanos)     在其他线程调用此对象的notify方法或notifyAll() 方法，或者其他某个线程中断当前线程，或者已超过某个实际时间量前，导致当前线程等待</code></pre><h1 id="ceil-floor-round三个方法的区别"><a href="#ceil-floor-round三个方法的区别" class="headerlink" title="ceil floor round三个方法的区别"></a><font size=3>ceil floor round三个方法的区别</font></h1><font color="#ccc">
+
+<pre><code>ceil：向上取整，取不小于自变量的最大整数。
+// ceil(3.1) = 4.0  ceil (-2.1) = -2.0
+floor：向下取整，取不大于自变量的最大整数
+//floor(3.1) = 3.0  floor(-2.1) = -3.0
+round: 周围，返回距离自变量最近的证书
+// round(12.5) = 13 rount(12.4) = 12</code></pre></font>
+
+<h1 id="substring-方法的取值"><a href="#substring-方法的取值" class="headerlink" title="substring 方法的取值"></a><font size=3>substring 方法的取值</font></h1><font color="#ccc">
+    substring(int beginIndex)     返回从beginIndex 位置开始，到最后的全部字符串
+    substring(int beginIndex, int endIndex)将返回一个包含从 beginIndex 到最后（不包含endIndex）的子字符串的字符串。
+        //System.out.println("0123456".substring(0,3));//012
+        //System.out.println("0123456".substring(0));//0123456
+        //System.out.println("0123456".substring(1));//123456
 
 </font>
 
+<h1 id="switch-语句控制条件的类型"><a href="#switch-语句控制条件的类型" class="headerlink" title="switch 语句控制条件的类型"></a><font size=3>switch 语句控制条件的类型</font></h1><font color="#ccc">
+    switch语句后的控制表达式只能是short、char、int、long整数类型和枚举类型。
+    不能是float，double和boolean类型。
+    String类型是java7开始支持。
 
-<div class="note 点击显/隐内容">
-            <p>内容</p>
-          </div>
+</font>
 
+<h1 id="Iterator-类型删除变量的方法"><a href="#Iterator-类型删除变量的方法" class="headerlink" title="Iterator 类型删除变量的方法"></a><font size=3>Iterator 类型删除变量的方法</font></h1><font color="#ccc">
+    Iterator 支持从源集合中安全地删除对象，只需在 Iterator 上调用 remove() 即可。
+    这样做的好处是可以避免 ConcurrentModifiedException ，
+    当打开 Iterator 迭代集合时，同时又在对集合进行修改。
+    有些集合不允许在迭代时删除或添加元素，但是调用 Iterator 的remove() 方法是个安全的做法。
 
+</font>
 
+<h1 id="Web-Service-服务的相关概念"><a href="#Web-Service-服务的相关概念" class="headerlink" title="Web Service 服务的相关概念"></a><font size=3>Web Service 服务的相关概念</font></h1><font color="#ccc">
+    Web service顾名思义是基于web的服务，它是一种跨平台，跨语言的服务。 
+    json是二进制文本文件，xml是可扩展标记文件。
+    比如说我们可以调用互联网上查询天气信息的web服务，把它嵌入到我们的B/S程序中。
+    当用户从我们的网点看到天气信息时，会认为我们为他提供很多的服务。
+    但其实我们什么也没做，只是简单的调用了一下服务器上的一端代码而已。
+    Web    service 可以将你的服务发布到互联网上让别人去调用，也可以调用别人发布的web service，和使用自己的代码一样。 
+    它是采用XML传输格式化的数据，它的通信协议是SOAP(简单对象访问协议).
 
+</font>
 
+<h1 id="父类与子类的构造方法"><a href="#父类与子类的构造方法" class="headerlink" title="父类与子类的构造方法"></a><font size=3>父类与子类的构造方法</font></h1><font color="#ccc">
+    子类的构造方法总是先调用父类的构造方法。
+    如果子类的构造方法没有明显地指明使用父类的哪个构造方法，子类就默认调用父类不带参数的构造方法。
+    而父类如果有多个构造参数，那么子类需要在自己的构造函数中指明调用父类的哪一个构造函数。
 
+</font>
 
+<h1 id="以下哪项陈述是正确的？"><a href="#以下哪项陈述是正确的？" class="headerlink" title="以下哪项陈述是正确的？"></a><font size=3>以下哪项陈述是正确的？</font></h1><p>A. 垃圾回收线程的优先级很高，以保证不再 使用的内存将被及时回收<br>B. 垃圾收集允许程序开发者明确指定释放 哪一个对象<br>C. 垃圾回收机制保证了JAVA程序不会出现 内存溢出<br>D. 进入”Dead”状态的线程将被垃圾回收器回收<br>E. 以上都不对<br><font color="#ccc">答案：E<br>解析：<br>A: 垃圾回收在jvm中优先级相当相当低。<br>B：垃圾收集器（GC）程序开发者只能推荐JVM进行回收，但何时回收，回收哪些，程序员不能控制。<br>C：垃圾回收机制只是回收不再使用的JVM内存，如果程序有严重BUG，照样内存溢出。<br>D：真正宣布一个对象死亡，至少需要经历2次标记过程。当第一次标记时会同时进行一次筛选(判断此对象是否有必要执行finalize方法)。<br>如果对象没有覆盖该方法，就面临死亡，所以说这个方法是对象逃脱死亡命运的最后一次机会。 进入DEAD的线程，它还可以恢复，GC不会回收<br></font><br><font color="#ccc">参考<a href="https://www.nowcoder.com/questionTerminal/1bbb41f39dff48d399ef31c5b000e33e" target="_blank" rel="noopener">牛客题目</a></font></p>
 
     </div>
 
@@ -254,9 +364,11 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag"># Java基础</a>
-              <a href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag"># 接口</a>
-              <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag"># 抽象类</a>
+              <a href="/tags/JVM/" rel="tag"># JVM</a>
+              <a href="/tags/static%E3%80%81final%E3%80%81finally%E3%80%81finalize/" rel="tag"># static、final、finally、finalize</a>
+              <a href="/tags/%E9%87%8D%E5%86%99%E3%80%81%E9%87%8D%E8%BD%BD/" rel="tag"># 重写、重载</a>
+              <a href="/tags/%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81%E3%80%81%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97%E7%AC%A6/" rel="tag"># 原码、反码、补码、基本运算符</a>
+              <a href="/tags/Java-%E6%A0%87%E8%AF%86%E7%AC%A6/" rel="tag"># Java 标识符</a>
           </div>
 
         
@@ -309,7 +421,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-以下描述错误的一项是（-）？"><span class="nav-number">1.</span> <span class="nav-text">1. 以下描述错误的一项是（ ）？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-不同数据类型之间的优先关系？"><span class="nav-number">2.</span> <span class="nav-text">2. 不同数据类型之间的优先关系？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-static的作用？"><span class="nav-number">3.</span> <span class="nav-text">3. static的作用？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-fianl、fianlly、finalize的作用？"><span class="nav-number">4.</span> <span class="nav-text">3. fianl、fianlly、finalize的作用？</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#以下描述错误的一项是（-）？"><span class="nav-number">1.</span> <span class="nav-text">以下描述错误的一项是（ ）？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不同数据类型之间的优先关系？"><span class="nav-number">2.</span> <span class="nav-text">不同数据类型之间的优先关系？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#static的作用？"><span class="nav-number">3.</span> <span class="nav-text">static的作用？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#final、finally、finalize的作用？"><span class="nav-number">4.</span> <span class="nav-text">final、finally、finalize的作用？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法的重写与重载"><span class="nav-number">5.</span> <span class="nav-text">方法的重写与重载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-基本运算符"><span class="nav-number">6.</span> <span class="nav-text">Java 基本运算符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原码、反码、补码的含义"><span class="nav-number">7.</span> <span class="nav-text">原码、反码、补码的含义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-的标识符特征"><span class="nav-number">8.</span> <span class="nav-text">Java 的标识符特征</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-Object方法"><span class="nav-number">9.</span> <span class="nav-text">Java Object方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ceil-floor-round三个方法的区别"><span class="nav-number">10.</span> <span class="nav-text">ceil floor round三个方法的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#substring-方法的取值"><span class="nav-number">11.</span> <span class="nav-text">substring 方法的取值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#switch-语句控制条件的类型"><span class="nav-number">12.</span> <span class="nav-text">switch 语句控制条件的类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Iterator-类型删除变量的方法"><span class="nav-number">13.</span> <span class="nav-text">Iterator 类型删除变量的方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Web-Service-服务的相关概念"><span class="nav-number">14.</span> <span class="nav-text">Web Service 服务的相关概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#父类与子类的构造方法"><span class="nav-number">15.</span> <span class="nav-text">父类与子类的构造方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#以下哪项陈述是正确的？"><span class="nav-number">16.</span> <span class="nav-text">以下哪项陈述是正确的？</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -328,7 +440,7 @@
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
