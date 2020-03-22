@@ -1,8 +1,16 @@
 package com.keith.utils;
 
-import java.io.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.BufferedWriter;
+import java.io.BufferedReader;
+import java.io.IOException;
 
 public class ReplaceStr {
 
@@ -33,7 +41,7 @@ public class ReplaceStr {
             return result;
         }
 
-        try (OutputStream outputStream = new FileOutputStream(file);
+        try (FileOutputStream outputStream = new FileOutputStream(file);
              OutputStreamWriter writer = new OutputStreamWriter(outputStream, encoding);
              BufferedWriter bufferedWriter = new BufferedWriter(writer)) {
             bufferedWriter.write(sb.toString());
