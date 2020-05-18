@@ -51,15 +51,15 @@
   };
 </script>
 
-  <meta name="description" content="Groovy 脚本基础全攻略">
+  <meta name="description" content="Groovy 脚本">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Groovy 脚本基础全攻略">
 <meta property="og:url" content="http://yoursite.com/2020/05/19/Groovy-%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80%E5%85%A8%E6%94%BB%E7%95%A5/index.html">
 <meta property="og:site_name" content="说书人">
-<meta property="og:description" content="Groovy 脚本基础全攻略">
+<meta property="og:description" content="Groovy 脚本">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-18T16:12:31.000Z">
-<meta property="article:modified_time" content="2020-05-18T18:25:42.684Z">
+<meta property="article:modified_time" content="2020-05-18T18:34:32.461Z">
 <meta property="article:author" content="说书人">
 <meta property="article:tag" content="Java基础">
 <meta property="article:tag" content="Groovy基础">
@@ -203,7 +203,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-05-19 00:12:31 / 修改时间：02:25:42" itemprop="dateCreated datePublished" datetime="2020-05-19T00:12:31+08:00">2020-05-19</time>
+              <time title="创建时间：2020-05-19 00:12:31 / 修改时间：02:34:32" itemprop="dateCreated datePublished" datetime="2020-05-19T00:12:31+08:00">2020-05-19</time>
             </span>
 
           
@@ -217,17 +217,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Groovy 脚本基础全攻略</p>
+        <p>Groovy 脚本</p>
 <a id="more"></a>
 
-<h1 id="不同于Java"><a href="#不同于Java" class="headerlink" title="不同于Java"></a>不同于Java</h1><p>Groovy  试图对于Java开发者更加友好。因此在设计groovy时，试图遵循最小差异的原则，尤其是对于拥有Java基础的人来学习Groovy.</p>
-<ol>
-<li><p>Default imports<br>所有的packages 和 class 都是默认导入，也就是说，你不必要使用一个明确的import语法来使用：</p>
-<p> java.io.*<br> java.lang.*<br> java.math.BigDecimal<br> java.math.BigInteger<br> java.net.*<br> java.util.*<br> groovy.lang.*<br> groovy.util.*</p>
-</li>
-<li><p>多态方法<br>在Groovy开发者开来，运行时被调用的方法都是被选择的。这些被称为运行时调度或多态方法。这意味着方法会基于运行时参数类型被选择调用。在Java中，情况正好相反，方法在编译时被选择调用，基于声明的类型。</p>
-</li>
-</ol>
+
+<p>Groovy  试图对于Java开发者更加友好。因此在设计groovy时，试图遵循最小差异的原则，尤其是对于拥有Java基础的人来学习Groovy.</p>
+<h1 id="Default-imports"><a href="#Default-imports" class="headerlink" title="Default imports"></a>Default imports</h1><p>所有的packages 和 class 都是默认导入，也就是说，你不必要使用一个明确的import语法来使用：</p>
+<pre><code>java.io.*
+java.lang.*
+java.math.BigDecimal
+java.math.BigInteger
+java.net.*
+java.util.*
+groovy.lang.*
+groovy.util.*</code></pre><h1 id="多态方法"><a href="#多态方法" class="headerlink" title="多态方法"></a>多态方法</h1><p>在Groovy开发者开来，运行时被调用的方法都是被选择的。这些被称为运行时调度或多态方法。这意味着方法会基于运行时参数类型被选择调用。在Java中，情况正好相反，方法在编译时被选择调用，基于声明的类型。</p>
 <p>在下述代码中，使用Java代码填写，可以被java和Groovy编译。但是它将表现的不一致：</p>
 <pre><code>int method(String arg) {
     return 1;
@@ -236,34 +239,28 @@ int method(Object arg) {
     return 2;
 }
 Object o = &quot;Object&quot;;
-int result = method(o);</code></pre><p>在Java中，你将使用<br>    assertEquals(2, result); //Java识别到的是Object类型<br>而在Groovy中<br>    assertEquals(1, result); //Groovy识别到的是String类型<br>这是因为Java使用静态语法类型，意味着o被定义为Object,而当方法真实使用时，Groovy将在运行时被选择类型为String.</p>
-<ol start="3">
-<li><p>数组初始化设值<br>在Java中，数组初始化采用两种方式：</p>
-<p> int[] array = {1,2,3}; //快速方式<br> int[] array2 = new intp[]{4,5,6}; //长语法</p>
-</li>
-</ol>
-<p>在 Groovy中，{…} 代码块为闭包保留。这意味着你在使用Java数组快速语法赋设定值时，不可以创建数组自变量。你取代使用Groovy的自变量列表，如：</p>
+int result = method(o);</code></pre><p>在Java中，你将使用</p>
+<pre><code>assertEquals(2, result); //Java识别到的是Object类型</code></pre><p>而在Groovy中</p>
+<pre><code>assertEquals(1, result); //Groovy识别到的是String类型</code></pre><p>这是因为Java使用静态语法类型，意味着o被定义为Object,而当方法真实使用时，Groovy将在运行时被选择类型为String.</p>
+<h1 id="数组初始化设值"><a href="#数组初始化设值" class="headerlink" title="数组初始化设值"></a>数组初始化设值</h1><p>在Java中，数组初始化采用两种方式：</p>
+<pre><code>int[] array = {1,2,3}; //快速方式
+int[] array2 = new intp[]{4,5,6}; //长语法</code></pre><p>在 Groovy中，{…} 代码块为闭包保留。这意味着你在使用Java数组快速语法赋设定值时，不可以创建数组自变量。你取代使用Groovy的自变量列表，如：</p>
 <pre><code>int[] array = [1,2,3]</code></pre><p>对于Groovy 3+的版本，你可以选择使用Java数组长语法的初始化自变量方法。</p>
-<pre><code>def array2 = new int[]{1,2,3};//Groovy     3.0+支持长语法</code></pre><ol start="4">
-<li><p>包范围可见性<br>在Groovy 中，对变量省略修饰词不会导致包私有化成员变量的现象，如Java中</p>
-<p> class Person {</p>
-<pre><code>String name</code></pre><p> }</p>
-</li>
-</ol>
-<p>反而，它常用于创建一种属性，标识为一个私有变量，一个有关联的getter和setter.<br>在Groovy中，使用@PackageScope 来创建一个有关联的私有包变量。</p>
+<pre><code>def array2 = new int[]{1,2,3};//Groovy     3.0+支持长语法</code></pre><h1 id="包范围可见性"><a href="#包范围可见性" class="headerlink" title="包范围可见性"></a>包范围可见性</h1><p>在Groovy 中，对变量省略修饰词不会导致包私有化成员变量的现象，如Java中：</p>
+<pre><code>class Person { String name }</code></pre><p>反而，它常用于创建一种属性，标识为一个私有变量，一个有关联的getter和setter.<br>在Groovy中，使用@PackageScope 来创建一个有关联的私有包变量。</p>
 <pre><code>class Person {
     @PackageScope String name
-}</code></pre><ol start="5">
-<li><p>ARM块<br>Java 7 介绍了ARM(Automatic Resource Management) blocks, 比如这个：</p>
-<p> Path file = Paths.get(“/path/to/file”);<br> Charset charset = Charset.forName(“UTF-8”);<br> try(BufferedReader reader = Files.newBufferedReader(file, charset)) {</p>
-<pre><code>String line;
-while ((line = reader.reader.readLine() != null)) {
-    System.out.println(line);
-}</code></pre><p> }catch (IOException e) {</p>
-<pre><code>e.printStackTrace();</code></pre><p> }</p>
-</li>
-</ol>
-<p>上述代码块在Groovy 3+版本中也支持。但是，Groovy 提供了更多元的方法闭合依赖，即实现相同效果的习语表达。比如：</p>
+}</code></pre><h1 id="ARM块"><a href="#ARM块" class="headerlink" title="ARM块"></a>ARM块</h1><p>Java 7 介绍了ARM(Automatic Resource Management) blocks, 比如这个：</p>
+<pre><code>Path file = Paths.get(&quot;/path/to/file&quot;);
+Charset charset = Charset.forName(&quot;UTF-8&quot;);
+try(BufferedReader reader = Files.newBufferedReader(file, charset)) {
+    String line;
+    while ((line = reader.reader.readLine() != null)) {
+        System.out.println(line);
+    }
+}catch (IOException e) {
+    e.printStackTrace();
+}</code></pre><p>上述代码块在Groovy 3+版本中也支持。但是，Groovy 提供了更多元的方法闭合依赖，即实现相同效果的习语表达。比如：</p>
 <pre><code>new File(&apos;/path/to/file&apos;).eachLine(&apos;UTF-8&apos;) {
     println it
 }</code></pre><p>或者，如果你想要的Java的闭包版本：</p>
@@ -272,20 +269,23 @@ while ((line = reader.reader.readLine() != null)) {
         reader.eachLine {
             println it
         }
-}</code></pre><ol start="6">
-<li><p>内部类<br>匿名内部类的实现和嵌套类遵循Java，但是还有些差别。比如从该类类中的局部变量不用是final。 在生成内部类字节码时，我们利用了groovy.lang.Closure的 一些实现细节。</p>
-</li>
-<li><p>1 静态内部类</p>
-<p>  class A {</p>
-<pre><code>static class B {}</code></pre><p>  }<br>  new A.B()</p>
-</li>
-</ol>
-<p>静态内部类的语法是最受支持的。如果你一定需要一个内部类，应该把它变成一个静态类。</p>
-<p>6.2 匿名内部类<br>import java.util.concurrent.CountDownLatch<br>import java.util.concurrent.TimeUnit</p>
-<p>CountDownLatch called = new CountDownLatch(1)</p>
-<p>Timer timer = new Timer()<br>timer.schedule(new TimeTask() {<br>    void run() {<br>        called.countDown()<br>    }<br>}, 0)</p>
-<p>assert called.await(10, TimeUnit.SECONDS)</p>
-<p>6.3 创建一个非静态的内部类实例<br>在Java中：</p>
+}</code></pre><h1 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h1><p>匿名内部类的实现和嵌套类遵循Java，但是还有些差别。比如从该类类中的局部变量不用是final。 在生成内部类字节码时，我们利用了groovy.lang.Closure的 一些实现细节。</p>
+<h2 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h2><pre><code>class A {
+    static class B {}
+}
+new A.B()</code></pre><p>静态内部类的语法是最受支持的。如果你一定需要一个内部类，应该把它变成一个静态类。</p>
+<h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><pre><code>import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
+
+CountDownLatch called = new CountDownLatch(1)
+
+Timer timer = new Timer()
+timer.schedule(new TimeTask() {
+    void run() {
+        called.countDown()
+    }
+}, 0)
+assert called.await(10, TimeUnit.SECONDS)</code></pre><h2 id="创建一个非静态的内部类实例"><a href="#创建一个非静态的内部类实例" class="headerlink" title="创建一个非静态的内部类实例"></a>创建一个非静态的内部类实例</h2><p>在Java中：</p>
 <pre><code>public class Y{
     public class X {}
     public X foo() {
@@ -304,23 +304,16 @@ while ((line = reader.reader.readLine() != null)) {
         return new X(y)
     }
 }</code></pre><p>需要注意的是，Groovy 支持使用一个参数调用方法，而不提供参数。然后参数的值将为空。基本上相同的规则也适用于调用构造函数。例如：您可能会编写 new () 而不是new X(this).因为这也可能是一种常规的方法，我们还没找到一个好的方法来防止这个问题。<br>Groovy 3.0.0 支持Java风格的语法来创建非静态内部类的实例。</p>
-<ol start="7">
-<li><p>Lambda表达式和方法引用运算符<br>Java 8+支持lambda 表达式和方法引用运算符(::)</p>
-<p> Runnable run = () -&gt; System.out.println(“Run”);//Java<br> list.forEach(System.out::println);</p>
-</li>
-</ol>
-<p>Groovy 3 和更高的版本在Parrot解析器中也支持这些功能。在Groovy的早期版本中，应该使用闭包代替：</p>
+<h1 id="Lambda表达式和方法引用运算符"><a href="#Lambda表达式和方法引用运算符" class="headerlink" title="Lambda表达式和方法引用运算符"></a>Lambda表达式和方法引用运算符</h1><p>Java 8+支持lambda 表达式和方法引用运算符(::)</p>
+<pre><code>Runnable run = () -&gt; System.out.println(&quot;Run&quot;);//Java
+list.forEach(System.out::println);</code></pre><p>Groovy 3 和更高的版本在Parrot解析器中也支持这些功能。在Groovy的早期版本中，应该使用闭包代替：</p>
 <pre><code>Runnable run = {println &apos;run&apos;}
-list.forEach {println it}// or list.each(this.&amp;println)</code></pre><ol start="8">
-<li>GStrings<br>由于双引号字符串文本会被解释为GString数值，如果使用Groovy 和Java编译器包含美元字符的字符串文本的类，Groovy可能会因为编译错误而报错，或者生成细微不同的代码。</li>
-</ol>
+list.forEach {println it}// or list.each(this.&amp;println)</code></pre><h1 id="GStrings"><a href="#GStrings" class="headerlink" title="GStrings"></a>GStrings</h1><p>由于双引号字符串文本会被解释为GString数值，如果使用Groovy 和Java编译器包含美元字符的字符串文本的类，Groovy可能会因为编译错误而报错，或者生成细微不同的代码。</p>
 <p>尽管Groovy通常在GString 和String之间自动转换(如果API 声明了参数的类型)，但要注意接收对象的JavaAPI,然后检查实际的类型。</p>
-<ol start="9">
-<li><p>String 和 Character 自变量<br>Groovy中的单引号自变量用于String，双引号结果用于String或GString，这取决于自变量中是否有补充插入。</p>
-<p> assert ‘c’.getClass()==String<br> assert “c”.getClass()==String<br> assert “c${1}”.getClass() in GString</p>
-</li>
-</ol>
-<p>Groovy只有在分配给char类型的变量时才会自动将单个字符串转换为char。当使用char类型的参数调用方法时，我们需要显式转换或确保值已提前转换。</p>
+<h1 id="String-和-Character-自变量"><a href="#String-和-Character-自变量" class="headerlink" title="String 和 Character 自变量"></a>String 和 Character 自变量</h1><p>Groovy中的单引号自变量用于String，双引号结果用于String或GString，这取决于自变量中是否有补充插入。</p>
+<pre><code>assert &apos;c&apos;.getClass()==String
+assert &quot;c&quot;.getClass()==String
+assert &quot;c${1}&quot;.getClass() in GString</code></pre><p>Groovy只有在分配给char类型的变量时才会自动将单个字符串转换为char。当使用char类型的参数调用方法时，我们需要显式转换或确保值已提前转换。</p>
 <pre><code>char a=&apos;a&apos;
 assert Character.digit(a, 16)==10 : &apos;But Groovy does boxing&apos;
 assert Character.digit((char) &apos;a&apos;, 16)==10
@@ -341,25 +334,27 @@ try {
 } catch(GroovyCastException e) {
 }
 assert (&apos;cx&apos; as char) == &apos;c&apos;
-assert &apos;cx&apos;.asType(char) == &apos;c&apos;</code></pre><ol start="10">
-<li><p>基础类型和封装类型<br>因为Groovy对所有东西都使用对象，所以它自动包装对原语的引用。因此，它不遵循Java的扩展优先于装箱的行为。下面是一个使用int的例子</p>
-<p>int i<br>m(i)</p>
-<p>void m(long l) {        //①<br>  println “in m(long)”<br>}</p>
-<p>void m(Integer i) {        //②<br>  println “in m(Integer)”<br>}</p>
-</li>
-</ol>
-<p>①  这是Java将调用的方法，因为加宽优先于取消装箱。<br>② 这是Groovy实际调用的方法，因为所有原语引用都使用它们的包装类。</p>
-<ol start="11">
-<li><p>行为 ==<br>在Java中，==表示对象的基元类型或标识的相等性。在Groovy==中，在所有情况下都表示相等。当计算可比较对象的相等性时，它转换为a.compareTo（b）==0，否则转换为a.equals（b）。要检查标识（引用相等），请使用is方法：a.is（b）。在Groovy 3中，您还可以使用===操作符（或取反版本）：a===b（或c！==d）。</p>
-</li>
-<li><p>转变<br>Java会自动扩大和缩小转换范围。</p>
-</li>
-</ol>
+assert &apos;cx&apos;.asType(char) == &apos;c&apos;</code></pre><h1 id="基础类型和封装类型"><a href="#基础类型和封装类型" class="headerlink" title="基础类型和封装类型"></a>基础类型和封装类型</h1><p>因为Groovy对所有东西都使用对象，所以它自动包装对原语的引用。因此，它不遵循Java的扩展优先于装箱的行为。下面是一个使用int的例子</p>
+<pre><code>int i
+m(i)
+
+void m(long l) {        //①    
+  println &quot;in m(long)&quot; 
+}
+
+void m(Integer i) {        //②
+  println &quot;in m(Integer)&quot;
+}</code></pre><p>①  这是Java将调用的方法，因为加宽优先于取消装箱。<br>② 这是Groovy实际调用的方法，因为所有原语引用都使用它们的包装类。</p>
+<h1 id="行为"><a href="#行为" class="headerlink" title="行为 =="></a>行为 ==</h1><p>在Java中，==表示对象的基元类型或标识的相等性。在Groovy==中，在所有情况下都表示相等。当计算可比较对象的相等性时，它转换为a.compareTo（b）==0，否则转换为a.equals（b）。要检查标识（引用相等），请使用is方法：a.is（b）。在Groovy 3中，您还可以使用===操作符（或取反版本）：a===b（或c！==d）。</p>
+<h1 id="转变"><a href="#转变" class="headerlink" title="转变"></a>转变</h1><p>Java会自动扩大和缩小转换范围。</p>
 <p>Converts from   booleanbyte    short    char    int    long    float    double<br>booleanbyte    -    N    N    N    N    N    N    N<br>byte        N    -    Y    C    Y    Y    Y    Y<br>short         N    C    -     C    Y    Y    Y    Y<br>char         N    C    C     -    Y    Y    Y    Y<br>int            N    C    C    C    -    Y    T    Y<br>long        N    C    C    C    C    -    T    T<br>float         N    C    C    C    C    C     -    Y<br>double        N    C    C    C    C    C    C    -</p>
 <p>“Y”表示Java可以进行的转换，“C”表示Java在显式转换时可以进行的转换，“T”表示Java可以进行的转换，但数据被截断，“N”表示Java无法进行的转换。</p>
-<ol start="13">
-<li>额外的关键词<br>Groovy有许多与Java相同的关键字，Groovy 3也有与Java相同的var保留类型。此外，Groovy还有以下关键字：<br>as<br>def<br>in<br>trait<br>it // within closures<br>Groovy没有Java严格，因为它允许一些关键字出现在Java中非法的地方，例如：var=[def:1，as:2，in:3，trait:4]。更重要的是，即使编译器很高兴，您也不希望在可能导致混淆的地方使用上述关键字。特别是，避免将它们用于变量、方法和类名，因此我们以前的var-var示例将被视为糟糕的样式。</li>
-</ol>
+<h1 id="额外的关键词"><a href="#额外的关键词" class="headerlink" title="额外的关键词"></a>额外的关键词</h1><p>Groovy有许多与Java相同的关键字，Groovy 3也有与Java相同的var保留类型。此外，Groovy还有以下关键字：</p>
+<pre><code>as
+def
+in
+trait
+it // within closures</code></pre><p>Groovy没有Java严格，因为它允许一些关键字出现在Java中非法的地方，例如：var=[def:1，as:2，in:3，trait:4]。更重要的是，即使编译器很高兴，您也不希望在可能导致混淆的地方使用上述关键字。特别是，避免将它们用于变量、方法和类名，因此我们以前的var-var示例将被视为糟糕的样式。</p>
 
     </div>
 
@@ -423,7 +418,7 @@ assert &apos;cx&apos;.asType(char) == &apos;c&apos;</code></pre><ol start="10">
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#不同于Java"><span class="nav-number">1.</span> <span class="nav-text">不同于Java</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Default-imports"><span class="nav-number">1.</span> <span class="nav-text">Default imports</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多态方法"><span class="nav-number">2.</span> <span class="nav-text">多态方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组初始化设值"><span class="nav-number">3.</span> <span class="nav-text">数组初始化设值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#包范围可见性"><span class="nav-number">4.</span> <span class="nav-text">包范围可见性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ARM块"><span class="nav-number">5.</span> <span class="nav-text">ARM块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内部类"><span class="nav-number">6.</span> <span class="nav-text">内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#静态内部类"><span class="nav-number">6.1.</span> <span class="nav-text">静态内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名内部类"><span class="nav-number">6.2.</span> <span class="nav-text">匿名内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建一个非静态的内部类实例"><span class="nav-number">6.3.</span> <span class="nav-text">创建一个非静态的内部类实例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lambda表达式和方法引用运算符"><span class="nav-number">7.</span> <span class="nav-text">Lambda表达式和方法引用运算符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GStrings"><span class="nav-number">8.</span> <span class="nav-text">GStrings</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#String-和-Character-自变量"><span class="nav-number">9.</span> <span class="nav-text">String 和 Character 自变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础类型和封装类型"><span class="nav-number">10.</span> <span class="nav-text">基础类型和封装类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#行为"><span class="nav-number">11.</span> <span class="nav-text">行为 &#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#转变"><span class="nav-number">12.</span> <span class="nav-text">转变</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#额外的关键词"><span class="nav-number">13.</span> <span class="nav-text">额外的关键词</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
